@@ -1,10 +1,19 @@
-```docker build -t my-gcc-app . ```
+# Installation
 
-Share your current folder with your docker 
+Clone or download the project.
+Open a terminal _in this folder_.
+
+Run
+```docker build -t my-gcc-app . ``` to build the docker. It will automatically install MPI.
+
+# Running
+
+Run docker. It will share the current folder with the docker instance in `/host`: put your code here. 
 ```docker run -it -v "$PWD":/host my-gcc-app```
 
-Open mpi test : 
 ```cd /host```
+
+## MPI 
 
 ```mpic++ <name of your cpp file>```
 
@@ -12,3 +21,8 @@ Open mpi test :
 
 To run with multiple threads :
 ``` mpirun --allow-run-as-root -n 4 ./a.out```
+
+## OpenMP
+
+```g++ -fopenmp <name of your cpp file>```
+```./a.out```
